@@ -15,89 +15,96 @@
 		<!-- Weather UI HTML -->
 		<div class="weather-widget" v-on:click="isDark = true" v-bind:class="{active: isActive, 'dark-theme': isDark}">
 		  <div class="weather-icon row">
-		    <i class="wi wi-day-sunny" id="icon1" v-on:click="doAnAlert()"></i>
+			<img  v-bind:src="iconsRef[0]" alt="" class="main">
 		  </div>
 		  <h1 class="temp-c row">{{weather.data.daily[0].temp.day.toFixed(0)}}</h1>
 		  <h5 class="condition row">{{weather.data.daily[0].weather[0].description}}</h5>
-		  <h3 class="location-name row">Istanbul</h3>
-		  <h5 class="location-country row">Turkey</h5>
+		  <h3 class="location-name row">Wellington</h3>
+		  <h5 class="location-country row">New Zealand</h5>
 		</div>
 		<div class="weather-forecast">
 
 		  <div class="forecast-item">
 		    <div class="day">
-		      <h4>{{getDayOfTheWeek(0)}}</h4>
+		      <h4>{{getDayOfTheWeek(1)}}</h4>
 		      <h6>{{dates[0]}}</h6>
 		    </div>
 		    <div class="forecast">
-		      <i class="wi wi-night-sleet"></i> {{weather.data.daily[1].temp.day.toFixed(0)}}
+		      <img  v-bind:src="iconsRef[0]" alt="">
+			  {{weather.data.daily[1].temp.day.toFixed(0)}}
 		      <h6>{{weather.data.daily[1].weather[0].description}}</h6>
 		    </div>
 		  </div>
 
 		  <div class="forecast-item">
 		    <div class="day">
-		      <h4>{{getDayOfTheWeek(1)}}</h4>
+		      <h4>{{getDayOfTheWeek(2)}}</h4>
 		      <h6>{{dates[1]}}</h6>
 		    </div>
 		    <div class="forecast">
-		      <i class="wi wi-night-sleet"></i> {{weather.data.daily[2].temp.day.toFixed(0)}}
+		      <img  v-bind:src="iconsRef[1]" alt="">
+			   {{weather.data.daily[2].temp.day.toFixed(0)}}
 		      <h6>{{weather.data.daily[2].weather[0].description}}</h6>
 		    </div>
 		  </div>
 
 		  <div class="forecast-item">
 		    <div class="day">
-		      <h4>{{getDayOfTheWeek(2)}}</h4>
+		      <h4>{{getDayOfTheWeek(3)}}</h4>
 		      <h6>{{dates[2]}}</h6>
 		    </div>
 		    <div class="forecast">
-		      <i class="wi wi-day-thunderstorm"></i> {{weather.data.daily[3].temp.day.toFixed(0)}}
+		      <img  v-bind:src="iconsRef[2]" alt="">
+			  {{weather.data.daily[3].temp.day.toFixed(0)}}
 		      <h6>{{weather.data.daily[3].weather[0].description}}</h6>
 		    </div>
 		  </div>
 
 		  <div class="forecast-item">
 		    <div class="day">
-		      <h4>{{getDayOfTheWeek(3)}}</h4>
+		      <h4>{{getDayOfTheWeek(4)}}</h4>
 		      <h6>{{dates[3]}}</h6>
 		    </div>
 		    <div class="forecast">
 				<img src="" alt="">
-		      <i class="wi wi-day-sunny"></i> {{weather.data.daily[4].temp.day.toFixed(0)}}
+		      <img  v-bind:src="iconsRef[3]" alt="">
+			  {{weather.data.daily[4].temp.day.toFixed(0)}}
 		      <h6>{{weather.data.daily[4].weather[0].description}}</h6>
 		    </div>
 		  </div>
 
 		  <div class="forecast-item">
 		    <div class="day">
-		      <h4>{{getDayOfTheWeek(4)}}</h4>
+		      <h4>{{getDayOfTheWeek(5)}}</h4>
 		      <h6>{{dates[4]}}</h6>
 		    </div>
 		    <div class="forecast">
-		      <i class="wi wi-night-sleet"></i> {{weather.data.daily[5].temp.day.toFixed(0)}}
+		       <img  v-bind:src="iconsRef[4]" alt="">
+			   {{weather.data.daily[5].temp.day.toFixed(0)}}
 		      <h6>{{weather.data.daily[5].weather[0].description}}</h6>
 		    </div>
 		  </div>
 
 		  <div class="forecast-item">
 		    <div class="day">
-		      <h4>{{getDayOfTheWeek(-2)}}</h4>
+		      <h4>{{getDayOfTheWeek(6)}}</h4>
 		      <h6>{{dates[5]}}</h6>
 		    </div>
 		    <div class="forecast">
-		      <i class="wi wi-night-sleet"></i> {{weather.data.daily[6].temp.day.toFixed(0)}}
+		       <img  v-bind:src="iconsRef[5]" alt="">
+			  {{weather.data.daily[6].temp.day.toFixed(0)}}
 		      <h6>{{weather.data.daily[6].weather[0].description}}</h6>
 		    </div>
 		  </div>
 
 		  <div class="forecast-item">
 		    <div class="day">
-		      <h4>{{getDayOfTheWeek(-1)}}</h4>
+		      <h4>{{getDayOfTheWeek(7)}}</h4>
 		      <h6>{{dates[6]}}</h6>
 		    </div>
 		    <div class="forecast">
-		      <i class="wi wi-night-sleet"></i> {{weather.data.daily[7].temp.day.toFixed(0)}}
+		       <img  v-bind:src="iconsRef[6]" alt="">
+			  {{weather.data.daily[7].temp.day.toFixed(0)}}
 		      <h6>{{weather.data.daily[7].weather[0].description}}</h6>
 		    </div>
 		  </div>
@@ -134,12 +141,29 @@
 				  // alert(' function')
 			  },
 			  getDayOfTheWeek: function (indexAddition) {
+				  // Ref to the date object
 				  var date = new Date();
+				  // Got an array of days which are strings
 				  var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+				  // The current day reference which returns a number 0 - 6
+				  // var currentDay = date.getDay();
 				  var currentDay = date.getDay();
-				  var finalRef = currentDay + indexAddition;
-				  return days[finalRef]
+				  console.log(currentDay)
 
+				  // Updated algorithm for infinite loop.
+				  function loop(n) {
+					  var foundDay;
+					for (var i=0; i<n; i++) {
+					  var pointer = (i + currentDay) % days.length;
+					  foundDay = days[pointer]
+					  console.log(foundDay)
+					}
+					// returns result
+					return foundDay
+				  }
+				  // Returns the day result
+				  return loop(indexAddition)
+			  // Function ENDS
 			  },
 			  createDates: function () {
 				  var now = moment();
@@ -151,51 +175,78 @@
 				  console.log(this);
 				  this.dates = datesCreated;
 			  },
-			  getIcons: function () {
-				  for (var i = 0; i < array.length; i++) {
-			      array[i]
-
-				}
-			  }
 
 		  }
 		});
+		// Vue instance ENDS
 
 
-		makeAjaxRequest();
+	function makeAjaxRequest (lat, lng) {
+       // getUrl will either be a **1. live geolocation based request or...
+       // a **2. predetermined hardcoded position
+       var getUrl;
+       // If the arguments/parameters above are true or false...
+       if (lat === false) {
+         // **1. if no longitude or latitude....go to Bali
+         getUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat=-8.366033&lon=114.997182&units=metric&exclude=hourly,minute&appid=66ce6f7e945db003aaa343f0bc010dc8';
+       } else {
+         // **2. add to api url string
+         getUrl = 'https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lng + '&units=metric&exclude=hourly,minute&appid=66ce6f7e945db003aaa343f0bc010dc8';
+       }
 
-		 function makeAjaxRequest () {
-		    // GET request for remote image in node.js
-		    axios({
-		      method: 'get',
-		      url: 'https://api.openweathermap.org/data/2.5/onecall?lat=-28.974576&lon=-41.005356&units=metric&exclude=hourly,minute&appid=13c94423ae63a2bfabde86d786ea767d'
-		    }).then(function (response) {
-			  app.weather=response
-			  getStarted()
-		    });
-		  } // makeAjaxRequest ENDS
+       axios({
+         method: 'get',
+         url: getUrl
+       }).then(function (response) {
+         // Here we assign the the data response to the app/vue weather property.
+         // We do not need to use 'data.weather' because vue always provides data
+         // as a property by default.
+         app.weather = response
 
-		  function getStarted() {
-		  	// console.log(app.weather);
-		  }
-
-			function weatherCheck (data) {
-				console.log(data);
-				// Has 8 checks
-				if(data.daily[0].weather[0].description.includes('sun')) {
-					alert('rain spotted');
-					$('panelOne')
-				}
-
-			    if(data.daily[0].weather[0].description.includes('sun')) {
-					alert('rain spotted');
-				}
-
-			}
+         function getIcons(response) {
+           var icons = [];
+           for (var i = 0; i < 8; i++) {
+             console.log(i)
+             var iconCode = response.data.daily[i].weather[0].icon;
+             var iconUrl = "http://openweathermap.org/img/wn/" + iconCode + "@2x.png";
+             icons.push(iconUrl)
+           }
+           app.iconsRef = icons;
+           console.log(app.iconsRef)
+         } // getIcons ENDS
 
 
-	}()); // iffe function ENDS
+         // Call and assign Icons
+         getIcons(response)
+       });
+     } // makeAjaxRequest ENDS
 
+     // A function that runs after the ajax response
+     function checkGeoLocation () {
+       // Check for browser geolocation functionality
+       if (navigator.geolocation) {
+         // If true call next function as part of the geolocation api method
+         navigator.geolocation.getCurrentPosition(showPosition);
+       } else {
+         makeAjaxRequest(false, false);
+         console.log("Geolocation is not supported by this browser.");
+       }
+
+       function showPosition(position) {
+         // Get longitude and latitude then pass to the makeAjaxRequest method
+         var lat = position.coords.latitude;
+         var lng = position.coords.longitude;
+         console.log(position.coords.latitude)
+         console.log(position.coords.longitude)
+         // We have a function pre-written that makes an ajax request
+         makeAjaxRequest(lat, lng);
+       }
+
+     } // checkGeoLocation ENDS
+
+     checkGeoLocation();
+
+   }()); // iffe function ENDS
 	</script>
 </body>
 </html>
